@@ -1,0 +1,37 @@
+#! /usr/bin/env bash
+
+OKURA_BIN="$HOME/.okura/bin"
+OKURA_ENVS="$HOME/.okura/envs"
+
+while : ; do
+  case $1 in
+    -t|--test)
+      okura_test=test
+      shift
+      ;;
+    activate)
+      if [ "$2" ] ; then
+        if [ -d "$OKURA_ENVS/$2/bin" ] ; then
+          echo "Activating environment '$2'"
+          for file in "$OKURA_ENVS/$2/bin/"*; do
+            if [[ $okura_test == test ]]; then
+              echo "> link ${file} => $OKURA_BIN/${file##*/}"
+            else
+              ln -sfn "${file}" "$OKURA_BIN/${file##*/}"
+            fi
+          done
+        else
+          echo "ERROR: '$2' is not an environment name"
+        fi
+      else
+        echo "ERROR: 'activate' requires environment name"
+        exit 1
+      fi
+      break
+      ;;
+    *)
+      echo "ERROR: use 'okura [--test] activate <ENV>' to activate environment"
+      exit 1
+      ;;
+  esac
+done
