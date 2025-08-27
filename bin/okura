@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
 
 OKURA_BIN="$HOME/.okura/bin"
 OKURA_ENVS="$HOME/.okura/envs"
