@@ -29,6 +29,12 @@ while : ; do
       fi
       break
       ;;
+    list)
+      for dir in "$OKURA_ENVS/"*; do
+        echo ${dir##*/}
+      done
+      break
+      ;;
     *)
       echo "ERROR: use 'okura [--test] activate <ENV>' to activate environment"
       exit 1
