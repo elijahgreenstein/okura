@@ -192,7 +192,7 @@ okura activate main
 
 #### Add Environments
 
-Retain the built dependencies (LibYAML, OpenSSL, and zlib) in `~/.okura/local` to simplify building additional versions of Ruby. To build a new environment with the same version of Ruby, follow the [build and install](#build-and-install-1) instructions above, but replace `main` with a different environment name. To build a different version, begin with the [download](#download-1) instructions above, but choose a different version. Then follow the [build and install](#build-and-install-1) instructions.
+Retain the built dependencies (LibYAML, OpenSSL, and zlib) in `~/.okura/local` to simplify building additional versions of Ruby. To build a new environment with the same version of Ruby, follow the [build and install](#build-and-install-1) instructions above, but replace `main` with a different environment name. To build a different version, follow the [download](#download-1) instructions above but choose a different version; then follow the [build and install](#build-and-install-1) instructions and use a different environment name.
 
 [libyaml-source]: https://pyyaml.org/wiki/LibYAML "LibYAML"
 [openssl-download]: https://github.com/openssl/openssl/releases "OpenSSL Releases"
