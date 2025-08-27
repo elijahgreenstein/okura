@@ -1,0 +1,6 @@
+bin/*
+!bin/okura
+envs/*
+local/*
+pkgs/*
+!pkgs/hash256.txt
