@@ -21,7 +21,7 @@ cd .okura
 make
 ```
 
-Follow the [instructions below](#ruby-installation) to install the Ruby dependencies (OpenSSL, LibYAML, and zlib) and Ruby from source.
+Follow the [instructions below](#ruby-installation) to build and install the RubyGems dependencies (OpenSSL, LibYAML, and zlib) and Ruby from source.
 
 ### Usage
 
@@ -44,11 +44,13 @@ okura --test activate <env>
 
 #### List Environments
 
-To see the names of all installed environments, use:
+Use the following command to list the name of all environments:
 
 ```
 okura list
 ```
+
+This lists all directories in `~/.okura/envs`.
 
 ### Uninstall
 
@@ -68,7 +70,7 @@ rm -rf ~/.okura
 
 ### Dependencies
 
-As specified in the [Building Ruby][ruby-building] guide, RubyGems requires installations of [OpenSSL][openssl-download], [LibYAML][libyaml-source], and [zlib][zlib].
+As specified in the [Building Ruby][ruby-building] guide, RubyGems requires [OpenSSL][openssl-download], [LibYAML][libyaml-source], and [zlib][zlib].
 
 The examples below reference the following versions:
 
@@ -97,7 +99,7 @@ done
 
 #### Build and Install
 
-Install each dependency into `~/.okura/local`. Use the `--prefix` option when configuring each installation to specify this nonstandard location.
+Install each dependency into `~/.okura/local`. Use the `--prefix` option when configuring each build to specify this nonstandard location.
 
 LibYAML:
 
@@ -140,7 +142,7 @@ rm -rf openssl-3.5.2 yaml-0.2.5 zlib-1.3.1
 
 #### Download
 
-Download a Ruby tarball from the [Ruby download page][ruby-download] or [Ruby releases page][ruby-releases]. Move it to `~/.okura/pkgs` (the examples below use version 3.4.5). Note the SHA-256 hash value and add it to `~/.okura/pkgs/hash256.txt`. Check the hash value and then extract the source code:
+Download a Ruby tarball from the [Ruby download page][ruby-download] or [Ruby releases page][ruby-releases] (the examples below use version 3.4.5) and move it to `~/.okura/pkgs`. Note the SHA-256 hash value and add it to `~/.okura/pkgs/hash256.txt` in the format `<HASH> ruby-3.4.5.tar.gz`. Check the hash value and then extract the source code:
 
 ```
 cd ~/.okura/pkgs
@@ -157,7 +159,7 @@ cd ruby-3.4.5
 mkdir build && cd build
 ```
 
-Use the `--with-opt-dir` option to specify the location of the RubyGems dependencies when configuring the build. Use the `--prefix` option to specify the installation location. Install all versions of Ruby into directories in `~/.okura/envs/<env>`. The examples below create an environment named `main`:
+Use the `--with-opt-dir` option to specify the location of the RubyGems dependencies when configuring the build. Use the `--prefix` option to specify the installation location. Install all versions of Ruby into directories in `~/.okura/envs/<env>`. The examples below create an Ōkura environment named `main`:
 
 ```
 ../configure --prefix="$HOME/.okura/envs/main" \
@@ -190,7 +192,7 @@ okura activate main
 
 #### Add Environments
 
-Retain the dependencies of LibYAML, OpenSSL, and zlib in `~/.okura/local` to simplify building additional versions of Ruby. To build a new environment with the same version of Ruby, follow the [build and install](#build-and-install) instructions above, but replace `main` with a different environment name. To build a different version, follow the [download](#download) instructions above, but choose a different version.
+Retain the built dependencies (LibYAML, OpenSSL, and zlib) in `~/.okura/local` to simplify building additional versions of Ruby. To build a new environment with the same version of Ruby, follow the [build and install](#build-and-install-1) instructions above, but replace `main` with a different environment name. To build a different version, begin with the [download](#download-1) instructions above, but choose a different version. Then follow the [build and install](#build-and-install-1) instructions.
 
 [libyaml-source]: https://pyyaml.org/wiki/LibYAML "LibYAML"
 [openssl-download]: https://github.com/openssl/openssl/releases "OpenSSL Releases"
