@@ -1,6 +1,6 @@
 # Ōkura: The Great Ruby Treasury
 
-Ōkura (大蔵), Japanese for "Treasury" (or, more literally, "great storehouse") is a simple tool for managing versions of Ruby built from source. It is more a thought experiment about package managers than a full-fledged package manager (notably, it facilitates switching between different Ruby installations, but leaves the actual installation to users).
+Ōkura (大蔵), Japanese for "Treasury" (or, more literally, "great storehouse") is a simple tool for managing versions of Ruby built from source. It is more a thought experiment about package managers than a full-fledged package manager itself (notably, it facilitates switching between different Ruby installations, but leaves the actual installation process to users).
 
 ## Ōkura Usage
 
