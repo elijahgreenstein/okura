@@ -1,0 +1,16 @@
+OKURA_ENV="# => Okura environment"
+RC_LINES="$HOME/.okura/conf/rc-lines"
+
+for file in "$HOME/.zshrc" "$HOME/.bashrc"; do
+  if [ -z "$(grep "$OKURA_ENV" $file)" ]
+  then
+    echo "" >> $file
+    echo "$OKURA_ENV" >> $file
+    echo "[ -f $HOME/.okura/init ] && . $HOME/.okura/init" >> $file
+    echo "# <= Okura environment" >> $file
+    echo "" >> $file
+    echo "> Updated $file"
+  else
+    echo "> Okura already configured on $file"
+  fi
+done
