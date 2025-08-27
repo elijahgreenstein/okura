@@ -1,3 +1,6 @@
+.PHONY: all
+all: dirs rc
+
 .PHONY: dirs
 dirs:
 	mkdir -p local envs
