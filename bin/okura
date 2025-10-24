@@ -2,6 +2,9 @@
 
 OKURA_BIN="$HOME/.okura/bin"
 OKURA_ENVS="$HOME/.okura/envs"
+RUBY_PATH=$(realpath $OKURA_BIN/ruby)
+ENV_PATH=${RUBY_PATH#$OKURA_ENVS/}
+ACTIVE_ENV=${ENV_PATH%%/*}
 
 while : ; do
   case $1 in
@@ -35,14 +38,16 @@ while : ; do
       ;;
     list)
       for dir in "$OKURA_ENVS/"*; do
-        echo ${dir##*/}
+        if [[ ${dir##*/} == $ACTIVE_ENV ]]; then
+          echo -e "\033[0;31m> ${dir##*/}\033[0m"
+        else
+          echo "  ${dir##*/}"
+        fi
       done
       break
       ;;
     env)
-      rpath=$(realpath $OKURA_BIN/ruby)
-      renv=${rpath#$OKURA_ENVS/}
-      echo ${renv%%/*}
+      echo ${ACTIVE_ENV}
       break
       ;;
     *)
