@@ -40,7 +40,7 @@ while : ; do
       break
       ;;
     env)
-      rpath=$(realpath ruby)
+      rpath=$(realpath $OKURA_BIN/ruby)
       renv=${rpath#$OKURA_ENVS/}
       echo ${renv%%/*}
       break
