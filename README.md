@@ -40,6 +40,12 @@ okura -t activate <env>
 okura --test activate <env>
 ```
 
+To list the active environment, use:
+
+```
+okura env
+```
+
 #### List Environments
 
 Use the following command to list the name of all environments:
@@ -186,6 +192,12 @@ As [detailed above](#activate-environments), use `okura activate` to activate th
 
 ```
 okura activate main
+```
+
+You can also print the current environment name:
+
+```
+okura env
 ```
 
 #### Add Environments

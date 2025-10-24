@@ -12,7 +12,11 @@ while : ; do
     activate)
       if [ "$2" ] ; then
         if [ -d "$OKURA_ENVS/$2/bin" ] ; then
-          echo "Activating environment '$2'"
+          if [[ $okura_test == test ]]; then
+            echo "Testing environment activation:"
+          else
+            echo "Activating environment '$2'"
+          fi
           for file in "$OKURA_ENVS/$2/bin/"*; do
             if [[ $okura_test == test ]]; then
               echo "> link ${file} => $OKURA_BIN/${file##*/}"
@@ -33,6 +37,12 @@ while : ; do
       for dir in "$OKURA_ENVS/"*; do
         echo ${dir##*/}
       done
+      break
+      ;;
+    env)
+      rpath=$(realpath ruby)
+      renv=${rpath#$OKURA_ENVS/}
+      echo ${renv%%/*}
       break
       ;;
     *)
