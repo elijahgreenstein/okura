@@ -169,7 +169,7 @@ Build, test, and install Ruby:
 ```
 make
 make test-all
-make test
+make install
 ```
 
 #### (Optional) Clean Up
